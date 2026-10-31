@@ -1,0 +1,98 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: content-box radial-gradient(rgb(122, 12, 12), rgb(35, 35, 102));
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-family: monospace;
+}
+
+/* The `random()` css function only works in Chrome and Safari: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/random#browser_compatibility */
+@supports (offset-distance: random(0%, 25%)) {
+  @keyframes moveCrab {
+    0% {
+      offset-distance: random(--k1, 0, 25%);
+    }
+    25% {
+      offset-distance: random(--k2, 0%, 25%);
+    }
+    50% {
+      offset-distance: random(--k3, 0%, 25%);
+    }
+    75% {
+      offset-distance: random(--k4, 0%, 25%);
+    }
+    100% {
+      offset-distance: random(--k5, 0%, 25%);
+    }
+  }
+}
+
+@keyframes moveCrab {
+  0% {
+    offset-distance: 10%;
+  }
+  25% {
+    offset-distance: 25%;
+  }
+  50% {
+    offset-distance: 10%;
+  }
+  75% {
+    offset-distance: 25%;
+  }
+  100% {
+    offset-distance: 10%;
+  }
+}
+
+.btn {
+  position: relative;
+  width: auto;
+  height: 46px;
+  padding: 0px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background: linear-gradient(to bottom, #ffda82, #ffc34d);
+
+  border: none;
+  border-radius: 999px;
+
+  color: #26364b;
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(to bottom, #ffe19a, #ffca60);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.ferris {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  border-radius: 50% 50% 40% 40%;
+
+  offset-path: border-box;
+  offset-distance: 20%;
+  animation: moveCrab 5s infinite alternate ease-in-out;
+  object-fit: contain;
+}
